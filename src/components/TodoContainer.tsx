@@ -5,11 +5,11 @@ import AddIcon from "@mui/icons-material/Add";
 
 import React, { useState, ChangeEvent, FormEvent } from "react";
 
-interface TodoFormProps {
+interface TodoProps {
   addTodo: AddTodo;
 }
 
-export const TodoContainer: React.FC<TodoFormProps> = ({ addTodo }) => {
+export const TodoContainer: React.FC<TodoProps> = ({ addTodo }) => {
   const [newTodo, setNewTodo] = useState<string>("");
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

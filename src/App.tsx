@@ -5,7 +5,7 @@ import { TodoContainer } from "./components/TodoContainer";
 import { TodoList } from "./components/Todolist";
 
 const App = () => {
-  
+
   const [todos, setTodos] = useState<Array<Todo>>([
     { text: "Please Add your", complete: false },
     { text: "Todo Here !", complete: true },
