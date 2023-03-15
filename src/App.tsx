@@ -7,8 +7,8 @@ import { TodoList } from "./components/Todolist";
 const App = () => {
 
   const [todos, setTodos] = useState<Array<Todo>>([
-    { text: "Please Add your", complete: false },
-    { text: "Todo Here !", complete: true },
+    { text: "Please Add all your", complete: false },
+    { text: "Todo's Here ! Enjoy !", complete: true },
   ]);
 
   const toggleComplete: ToggleComplete = (selectedTodo) => {
