@@ -5,6 +5,7 @@ import { TodoContainer } from "./components/TodoContainer";
 import { TodoList } from "./components/Todolist";
 
 const App = () => {
+  
   const [todos, setTodos] = useState<Array<Todo>>([
     { text: "Please Add your", complete: false },
     { text: "Todo Here !", complete: true },
@@ -26,16 +27,14 @@ const App = () => {
     }
   };
 
-  const removeTodo: RemoveTodo = (todoToRemove) => {
+  const deleteTodo: DeleteTodo = (todoToDelete) => {
     let updatedTodos: Array<Todo> = todos.filter(
-      (todo) => todo.text != todoToRemove.text
+      (todo) => todo.text != todoToDelete.text
     );
     setTodos(updatedTodos);
   };
 
   const editTodo: EditTodo = (todoToEdit) => {
-    console.log(todoToEdit);
-    console.log(todos);
     let updatedTodos: Array<Todo> = todos.map((todo) => {
       if (todo.text === todoToEdit.text) {
         return { ...todoToEdit, text: todoToEdit?.newText || todo.text };
@@ -54,7 +53,7 @@ const App = () => {
       <TodoList
         todos={todos}
         toggleComplete={toggleComplete}
-        onRemoveTodo={removeTodo}
+        onDeleteTodo={deleteTodo}
         editTodo={editTodo}
       />
     </Container>

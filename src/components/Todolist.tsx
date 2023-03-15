@@ -5,14 +5,14 @@ import { TodoItems } from "./TodoItems";
 interface TodoListProps {
   todos: Array<Todo>;
   toggleComplete: ToggleComplete;
-  onRemoveTodo: RemoveTodo;
+  onDeleteTodo: DeleteTodo;
   editTodo: EditTodo;
 }
 
 export const TodoList: React.FC<TodoListProps> = ({
   todos,
   toggleComplete,
-  onRemoveTodo,
+  onDeleteTodo,
   editTodo,
 }) => {
   return (
@@ -22,7 +22,7 @@ export const TodoList: React.FC<TodoListProps> = ({
           key={todo.text}
           todo={todo}
           toggleComplete={toggleComplete}
-          onRemoveTodo={onRemoveTodo}
+          onDeleteTodo={onDeleteTodo}
           editTodo={editTodo}
         />
       ))}

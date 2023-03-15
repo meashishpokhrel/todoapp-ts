@@ -14,21 +14,21 @@ import SaveIcon from "@mui/icons-material/Save";
 interface TodoListItemProps {
   todo: Todo;
   toggleComplete: ToggleComplete;
-  onRemoveTodo: RemoveTodo;
+  onDeleteTodo: DeleteTodo;
   editTodo: EditTodo;
 }
 
 export const TodoItems: React.FC<TodoListItemProps> = ({
   todo,
   toggleComplete,
-  onRemoveTodo,
+  onDeleteTodo,
   editTodo,
 }) => {
   const [isEditOn, setIsEditOn] = useState<boolean>(false);
   const [inputText, setInputText] = useState<string>(todo.text);
 
   const onDelete = () => {
-    onRemoveTodo(todo);
+    onDeleteTodo(todo);
   };
 
   const onEdit = () => {
@@ -80,7 +80,7 @@ export const TodoItems: React.FC<TodoListItemProps> = ({
             placeholder="Edit Todo"
           />
           <ListItemIcon>
-            <IconButton onClick={() => onEdit()} edge="end" aria-label="delete">
+            <IconButton onClick={() => onEdit()} edge="end" aria-label="edit">
               <SaveIcon />
             </IconButton>
           </ListItemIcon>
