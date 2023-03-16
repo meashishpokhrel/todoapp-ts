@@ -38,7 +38,8 @@ export const TodoItems: React.FC<TodoListItemProps> = ({
   const onEdit = () => {
     setIsEditOn(!isEditOn);
     if (isEditOn) {
-      editTodo(id,
+      editTodo(
+        id,
         inputText
       );
     }
