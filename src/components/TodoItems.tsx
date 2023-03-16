@@ -12,6 +12,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import SaveIcon from "@mui/icons-material/Save";
 
 interface TodoListItemProps {
+  key: string;
+  id: number;
   todo: Todo;
   toggleComplete: ToggleComplete;
   onDeleteTodo: DeleteTodo;
@@ -19,6 +21,8 @@ interface TodoListItemProps {
 }
 
 export const TodoItems: React.FC<TodoListItemProps> = ({
+  key,
+  id,
   todo,
   toggleComplete,
   onDeleteTodo,
@@ -28,17 +32,15 @@ export const TodoItems: React.FC<TodoListItemProps> = ({
   const [inputText, setInputText] = useState<string>(todo.text);
 
   const onDelete = () => {
-    onDeleteTodo(todo);
+    onDeleteTodo(id);
   };
 
   const onEdit = () => {
     setIsEditOn(!isEditOn);
     if (isEditOn) {
-      editTodo({
-        text: todo.text,
-        complete: todo.complete,
-        newText: inputText,
-      });
+      editTodo(id,
+        inputText
+      );
     }
   };
 
@@ -56,7 +58,7 @@ export const TodoItems: React.FC<TodoListItemProps> = ({
           checked={todo.complete}
           tabIndex={-1}
           disableRipple
-          onChange={() => toggleComplete(todo)}
+          onChange={() => toggleComplete(id)}
         />
       </ListItemIcon>
       {!isEditOn ? (

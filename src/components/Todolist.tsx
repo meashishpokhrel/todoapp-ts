@@ -17,9 +17,10 @@ export const TodoList: React.FC<TodoListProps> = ({
 }) => {
   return (
     <List>
-      {todos.map((todo) => (
+      {todos.map((todo, idx) => (
         <TodoItems
-          key={todo.text}
+          key={`todo-${idx}`}
+          id={idx}
           todo={todo}
           toggleComplete={toggleComplete}
           onDeleteTodo={onDeleteTodo}

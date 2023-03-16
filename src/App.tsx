@@ -11,9 +11,9 @@ const App = () => {
     { text: "Todo's Here ! Enjoy !", complete: true },
   ]);
 
-  const toggleComplete: ToggleComplete = (selectedTodo) => {
-    const updatedTodos = todos.map((todo) => {
-      if (todo === selectedTodo) {
+  const toggleComplete: ToggleComplete = (id: number) => {
+    const updatedTodos = todos.map((todo, idx) => {
+      if (idx === id) {
         return { ...todo, complete: !todo.complete };
       }
       return todo;
@@ -23,21 +23,21 @@ const App = () => {
 
   const addTodo: AddTodo = (newTodo) => {
     if (newTodo !== "") {
-      setTodos([...todos, { text: newTodo, complete: false }]);
+      setTodos([{ text: newTodo, complete: false }].concat([...todos, ]));
     }
   };
 
-  const deleteTodo: DeleteTodo = (todoToDelete) => {
+  const deleteTodo: DeleteTodo = (id: number) => {
     let updatedTodos: Array<Todo> = todos.filter(
-      (todo) => todo.text != todoToDelete.text
+      (todo, idx) => idx != id
     );
     setTodos(updatedTodos);
   };
 
-  const editTodo: EditTodo = (todoToEdit) => {
-    let updatedTodos: Array<Todo> = todos.map((todo) => {
-      if (todo.text === todoToEdit.text) {
-        return { ...todoToEdit, text: todoToEdit?.newText || todo.text };
+  const editTodo: EditTodo = (id, newText) => {
+    let updatedTodos: Array<Todo> = todos.map((todo, idx) => {
+      if (idx === id) {
+        return { ...todo, text: newText };
       }
       return todo;
     });
