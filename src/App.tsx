@@ -7,11 +7,6 @@ import { TodoList } from "./components/Todolist";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-  },
-});
 
 const App = () => {
   const [todos, setTodos] = useState<Array<Todo>>([
@@ -51,8 +46,7 @@ const App = () => {
   };
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
+ 
       <Container>
         <header>
           <h1>Todo App</h1>
@@ -65,7 +59,6 @@ const App = () => {
           editTodo={editTodo}
         />
       </Container>
-    </ThemeProvider>
   );
 };
 
